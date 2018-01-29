@@ -1,8 +1,7 @@
 Function Set-PrimaryDNSSuffix {
     [cmdletbinding(SupportsShouldProcess)]
     Param(
-        [Parameter(Position = 0, Mandatory, HelpMessage = "Enter the new primary DNS Suffix name e.g. company.pri")]
-        [ValidatePattern("\w+\.\w+")]
+        [Parameter(Position = 0, HelpMessage = "Enter the new primary DNS Suffix name e.g. company.pri")]
         [string]$DNSSuffix,
         [Parameter(ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
@@ -38,7 +37,7 @@ Function Set-PrimaryDNSSuffix {
                     Invoke-Command @invoke
                 }
                 Catch {
-                    write-warning "[$((Get-Date).TimeofDay) PROCESS] Error with command on $Computer. $($_.Exception.Message)"
+                    Write-Warning "[$((Get-Date).TimeofDay) PROCESS] Error with command on $Computer. $($_.Exception.Message)"
                 }
             }
         } #foreach

@@ -1,4 +1,9 @@
 #Changelog for DNSSuffix module
 
+v0.2.0
+updated manifest
+added help documentation
+modified Set-PrimaryDNSSuffix to allow setting it to null or blank
+
 v0.1.0
 initial files
