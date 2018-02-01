@@ -3,8 +3,10 @@ This PowerShell module has two simple commands to that work with the registry to
 
 ![](./images/system1.png)
 
-This value is maintained in the registry under  HKLM:\system\CurrentControlSet\Services\tcpip\parameters where you must change the Domain and NV Domain properties. The commands in this module allow you to set and get those values using PowerShell Remoting.
+This value is maintained in the registry under  HKLM:\system\CurrentControlSet\Services\tcpip\parameters where you must change the Domain and NV Domain properties. You can also configure whether to synchronize the DNS suffix with domain member ship changes. The commands in this module allow you to set and get those values using PowerShell Remoting.
 
 I put this module together after helping [Greg Shields](http://twitter.com/ConcentratdGreg) work through this very issue as there don't appear to be any existing PowerShell commands to handle this setting.
 
-*last updated 29 January, 2018*
+You can install this module from the PowerShell Gallery: `Install-Module DNSSuffix`
+
+*last updated 1 February, 2018*

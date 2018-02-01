@@ -94,29 +94,32 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------- Example 1 ---------------------------</maml:title>
+        <maml:title>---------------------------------- Example 1 ----------------------------------</maml:title>
         <dev:code>PS C:\&gt;Get-PrimaryDNSSuffix
 
 
-Computername : Bovine320
-Domain       : globomantics.local
-NV Domain    : globomantics.local</dev:code>
+Computername      : Bovine320
+Domain            : globomantics.local
+NV Domain         : globomantics.local
+SynchronizeSuffix : True</dev:code>
         <dev:remarks>
           <maml:para>Get the DNS settings for the local computer.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>--------------------------- Example 2 ---------------------------</maml:title>
+        <maml:title>---------------------------------- Example 2 ----------------------------------</maml:title>
         <dev:code>PS C:\&gt;Get-PrimaryDNSSuffix -computername srv1,srv2
 
 
-Computername : SRV1
-Domain       : company.local
-NV Domain    : company.local
+Computername      : SRV1
+Domain            : company.local
+NV Domain         : company.local
+SynchronizeSuffix : True
 
-Computername : SRV2
-Domain       : company.local
-NV Domain    : company.local</dev:code>
+Computername      : SRV2
+Domain            : company.local
+NV Domain         : company.local
+SynchronizeSuffix : True</dev:code>
         <dev:remarks>
           <maml:para>Get the DNS settings for remote computers.</maml:para>
         </dev:remarks>
@@ -157,6 +160,17 @@ NV Domain    : company.local</dev:code>
           </dev:type>
           <dev:defaultValue>None</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+          <maml:name>SynchronizeSuffix</maml:name>
+          <maml:Description>
+            <maml:para>This is the equivalent of checking or unchecking the box that says "Change primary DNS suffix when domain membership changes". Use this Switch to "check" the box. Omit it to "uncheck" the box.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
           <maml:name>Computername</maml:name>
           <maml:Description>
@@ -168,17 +182,6 @@ NV Domain    : company.local</dev:code>
             <maml:uri />
           </dev:type>
           <dev:defaultValue>$env:Computername</dev:defaultValue>
-        </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-          <maml:name>Confirm</maml:name>
-          <maml:Description>
-            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-          </maml:Description>
-          <dev:type>
-            <maml:name>SwitchParameter</maml:name>
-            <maml:uri />
-          </dev:type>
-          <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
         <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
           <maml:name>Credential</maml:name>
@@ -203,9 +206,44 @@ NV Domain    : company.local</dev:code>
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+          <maml:name>Confirm</maml:name>
+          <maml:Description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:Description>
+          <dev:type>
+            <maml:name>SwitchParameter</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>False</dev:defaultValue>
+        </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
+        <maml:name>DNSSuffix</maml:name>
+        <maml:Description>
+          <maml:para>Enter the new primary DNS Suffix name such as company.pri</maml:para>
+        </maml:Description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
+        <maml:name>SynchronizeSuffix</maml:name>
+        <maml:Description>
+          <maml:para>This is the equivalent of checking or unchecking the box that says "Change primary DNS suffix when domain membership changes". Use this Switch to "check" the box. Omit it to "uncheck" the box.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
         <maml:name>Computername</maml:name>
         <maml:Description>
@@ -217,18 +255,6 @@ NV Domain    : company.local</dev:code>
           <maml:uri />
         </dev:type>
         <dev:defaultValue>$env:Computername</dev:defaultValue>
-      </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
-        <maml:name>Confirm</maml:name>
-        <maml:Description>
-          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
-        </maml:Description>
-        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
-        <dev:type>
-          <maml:name>SwitchParameter</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none">
         <maml:name>Credential</maml:name>
@@ -242,22 +268,22 @@ NV Domain    : company.local</dev:code>
         </dev:type>
         <dev:defaultValue>None</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="0" aliases="none">
-        <maml:name>DNSSuffix</maml:name>
-        <maml:Description>
-          <maml:para>Enter the new primary DNS Suffix name such as company.pri</maml:para>
-        </maml:Description>
-        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-        <dev:defaultValue>None</dev:defaultValue>
-      </command:parameter>
       <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="wi">
         <maml:name>WhatIf</maml:name>
         <maml:Description>
           <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:Description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>False</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="cf">
+        <maml:name>Confirm</maml:name>
+        <maml:Description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
         </maml:Description>
         <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
         <dev:type>
@@ -294,10 +320,17 @@ NV Domain    : company.local</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>--------------------------- Example 1 ---------------------------</maml:title>
+        <maml:title>---------------------------------- Example 1 ----------------------------------</maml:title>
         <dev:code>PS C:\&gt; Set-PrimaryDNSSuffix Company.pri -computername SRV1,SRV2</dev:code>
         <dev:remarks>
           <maml:para>Modify the primary DNS suffix on remote computers to Company.pri.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>---------------------------------- Example 2 ----------------------------------</maml:title>
+        <dev:code>PS C:\&gt; Set-PrimaryDNSSuffix Company.com -synchronizeSuffix -computername SRV3 -credential company\administrator</dev:code>
+        <dev:remarks>
+          <maml:para>Modify the primary DNS suffix on SRV3 and synchronize it with domain membership changes. This example also uses an alternate credential.</maml:para>
         </dev:remarks>
       </command:example>
     </command:examples>

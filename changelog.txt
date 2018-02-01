@@ -1,5 +1,9 @@
 #Changelog for DNSSuffix module
 
+v0.3.0
+added option to set SyncDomainWithMembership
+updated documentation
+
 v0.2.0
 updated manifest
 added help documentation

@@ -21,33 +21,37 @@ This command will query the registry to display settings for the primary DNS suf
 
 ## EXAMPLES
 
-### --------------------------- Example 1 --------------------------- 
+### ---------------------------------- Example 1 ---------------------------------- 
 ```powershell
 PS C:\>Get-PrimaryDNSSuffix
 
 
-Computername : Bovine320
-Domain       : globomantics.local
-NV Domain    : globomantics.local
+Computername      : Bovine320
+Domain            : globomantics.local
+NV Domain         : globomantics.local
+SynchronizeSuffix : True
 ```
 
 Get the DNS settings for the local computer.
 
-### --------------------------- Example 2 --------------------------- 
+### ---------------------------------- Example 2 ---------------------------------- 
 ```powershell
 PS C:\>Get-PrimaryDNSSuffix -computername srv1,srv2
 
 
-Computername : SRV1
-Domain       : company.local
-NV Domain    : company.local
+Computername      : SRV1
+Domain            : company.local
+NV Domain         : company.local
+SynchronizeSuffix : True
 
-Computername : SRV2
-Domain       : company.local
-NV Domain    : company.local
+Computername      : SRV2
+Domain            : company.local
+NV Domain         : company.local
+SynchronizeSuffix : True
 ```
 
 Get the DNS settings for remote computers.
+
 ## PARAMETERS
 
 ### -Computername
@@ -81,13 +85,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String[]
-
 
 ## OUTPUTS
 
@@ -95,5 +97,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## NOTES
 Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/
+
 ## RELATED LINKS
+
 [Set-PrimaryDNSSuffix]()

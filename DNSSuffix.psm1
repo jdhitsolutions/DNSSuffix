@@ -3,6 +3,7 @@ Function Set-PrimaryDNSSuffix {
     Param(
         [Parameter(Position = 0, HelpMessage = "Enter the new primary DNS Suffix name e.g. company.pri")]
         [string]$DNSSuffix,
+        [switch]$SynchronizeSuffix,
         [Parameter(ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [string[]]$Computername = $env:computername,
@@ -11,16 +12,24 @@ Function Set-PrimaryDNSSuffix {
     Begin {
         Write-Verbose "[$((Get-Date).TimeofDay) BEGIN  ] Starting $($myinvocation.mycommand)"
         Write-Verbose "[$((Get-Date).TimeofDay) BEGIN  ] Using a primary DNS Suffix of $DNSSuffix"
+        if ($SynchronizeSuffix) {
+            $synch = 1
+        }
+        else {
+            $Synch = 0
+        }
+        Write-Verbose "[$((Get-Date).TimeofDay) BEGIN  ] Synchronize DNS with domain membership: $SynchronizeSuffix [$synch])]"
         #define the scriptblock to run on each computer
         $sb = {
-            Param([string]$Value)
+            Param([string]$Value,[int]$Synch)
             Set-ItemProperty -path HKLM:\system\CurrentControlSet\Services\tcpip\parameters -Name Domain -Value $value
             Set-ItemProperty -path HKLM:\system\CurrentControlSet\Services\tcpip\parameters -Name 'NV Domain' -Value $Value
+            Set-ItemProperty -path HKLM:\system\CurrentControlSet\Services\tcpip\parameters -Name SyncDomainWithMembership -Value $Synch
         }
         #hashtable of parameters to splat to Invoke-Command
         $invoke = @{
             Scriptblock  = $sb
-            ArgumentList = $DNSSuffix
+            ArgumentList = $DNSSuffix,$synch
             ErrorAction  = "Stop"
         }
         if ($Credential) {
@@ -66,6 +75,8 @@ Function Get-PrimaryDNSSuffix {
                 Computername = $reg.hostname
                 Domain       = $reg.Domain
                 'NV Domain'  = $reg.'NV Domain'
+                SynchronizeSuffix = $reg.SyncDomainWithMembership -as [bool]
+                
             }
         }
         #hashtable of parameters to splat to Invoke-Command
