@@ -8,20 +8,23 @@ schema: 2.0.0
 # Get-PrimaryDNSSuffix
 
 ## SYNOPSIS
+
 Get Primary DNS suffix settings
 
 ## SYNTAX
 
-```
+```yaml
 Get-PrimaryDNSSuffix [[-Computername] <String[]>] [-Credential <PSCredential>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 This command will query the registry to display settings for the primary DNS suffix setting that you see when setting the computer name under system properties. This command relies on PowerShell remoting to query the remote registry.
 
 ## EXAMPLES
 
-### ---------------------------------- Example 1 ---------------------------------- 
+### EXAMPLE 1
+
 ```powershell
 PS C:\>Get-PrimaryDNSSuffix
 
@@ -34,7 +37,8 @@ SynchronizeSuffix : True
 
 Get the DNS settings for the local computer.
 
-### ---------------------------------- Example 2 ---------------------------------- 
+### EXAMPLE 2
+
 ```powershell
 PS C:\>Get-PrimaryDNSSuffix -computername srv1,srv2
 
@@ -55,12 +59,13 @@ Get the DNS settings for remote computers.
 ## PARAMETERS
 
 ### -Computername
+
 The names of one or more computers to query. When querying the local computer you must be running in an elevated session.
 
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: cn, host
 
 Required: False
 Position: 0
@@ -70,6 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
+
 Specify an optional credential for remote computers.
 
 ```yaml
@@ -85,6 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
@@ -96,6 +103,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Object
 
 ## NOTES
+
 Learn more about PowerShell: http://jdhitsolutions.com/blog/essential-powershell-resources/
 
 ## RELATED LINKS

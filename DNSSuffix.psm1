@@ -6,6 +6,7 @@ Function Set-PrimaryDNSSuffix {
         [switch]$SynchronizeSuffix,
         [Parameter(ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
+        [Alias("cn","host")]
         [string[]]$Computername = $env:computername,
         [pscredential]$Credential
     )
@@ -60,9 +61,12 @@ Function Set-PrimaryDNSSuffix {
 
 Function Get-PrimaryDNSSuffix {
     [cmdletbinding()]
+    [OutputType("PSCustomObject")]
+
     Param(
         [Parameter(Position = 0, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
+        [Alias("cn","host")]
         [string[]]$Computername = $env:computername,
         [pscredential]$Credential
     )

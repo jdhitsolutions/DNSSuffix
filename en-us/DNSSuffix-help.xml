@@ -15,7 +15,7 @@
     <command:syntax>
       <command:syntaxItem>
         <maml:name>Get-PrimaryDNSSuffix</maml:name>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="cn, host">
           <maml:name>Computername</maml:name>
           <maml:Description>
             <maml:para>The names of one or more computers to query. When querying the local computer you must be running in an elevated session.</maml:para>
@@ -42,7 +42,7 @@
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="0" aliases="cn, host">
         <maml:name>Computername</maml:name>
         <maml:Description>
           <maml:para>The names of one or more computers to query. When querying the local computer you must be running in an elevated session.</maml:para>
@@ -94,7 +94,7 @@
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>---------------------------------- Example 1 ----------------------------------</maml:title>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt;Get-PrimaryDNSSuffix
 
 
@@ -107,7 +107,7 @@ SynchronizeSuffix : True</dev:code>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>---------------------------------- Example 2 ----------------------------------</maml:title>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt;Get-PrimaryDNSSuffix -computername srv1,srv2
 
 
@@ -171,7 +171,7 @@ SynchronizeSuffix : True</dev:code>
           </dev:type>
           <dev:defaultValue>False</dev:defaultValue>
         </command:parameter>
-        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="cn, host">
           <maml:name>Computername</maml:name>
           <maml:Description>
             <maml:para>The names of one or more computers to query. When configuring the local computer you must be running in an elevated session.</maml:para>
@@ -244,7 +244,7 @@ SynchronizeSuffix : True</dev:code>
         </dev:type>
         <dev:defaultValue>False</dev:defaultValue>
       </command:parameter>
-      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="none">
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="True (ByPropertyName, ByValue)" position="named" aliases="cn, host">
         <maml:name>Computername</maml:name>
         <maml:Description>
           <maml:para>The names of one or more computers to query. When configuring the local computer you must be running in an elevated session.</maml:para>
@@ -306,7 +306,7 @@ SynchronizeSuffix : True</dev:code>
     <command:returnValues>
       <command:returnValue>
         <dev:type>
-          <maml:name>None</maml:name>
+          <maml:name>PSCustomObject</maml:name>
         </dev:type>
         <maml:description>
           <maml:para></maml:para>
@@ -320,14 +320,14 @@ SynchronizeSuffix : True</dev:code>
     </maml:alertSet>
     <command:examples>
       <command:example>
-        <maml:title>---------------------------------- Example 1 ----------------------------------</maml:title>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Set-PrimaryDNSSuffix Company.pri -computername SRV1,SRV2</dev:code>
         <dev:remarks>
           <maml:para>Modify the primary DNS suffix on remote computers to Company.pri.</maml:para>
         </dev:remarks>
       </command:example>
       <command:example>
-        <maml:title>---------------------------------- Example 2 ----------------------------------</maml:title>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
         <dev:code>PS C:\&gt; Set-PrimaryDNSSuffix Company.com -synchronizeSuffix -computername SRV3 -credential company\administrator</dev:code>
         <dev:remarks>
           <maml:para>Modify the primary DNS suffix on SRV3 and synchronize it with domain membership changes. This example also uses an alternate credential.</maml:para>
