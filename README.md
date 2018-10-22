@@ -1,6 +1,6 @@
 # DNSSuffix
 
-This PowerShell module has two simple commands to that work with the registry to either get or set the primary DNS suffix of a computer. This is not the value you can configure on a per network adapter configuration. Instead this is the setting you see when you go into Advanced System properties to change the computer name. When you like the More... button you get a form like this:
+This PowerShell module has two simple commands to that work with the registry to either get or set the primary DNS suffix of a computer. This is not the value you can configure on a per network adapter configuration. Instead this is the setting you see when you go into Advanced System properties to change the computer name. When you click the More... button you get a form like this:
 
 ![](./images/system1.png)
 
@@ -10,4 +10,4 @@ I put this module together after helping [Greg Shields](http://twitter.com/Conce
 
 You can install this module from the PowerShell Gallery: `Install-Module DNSSuffix`
 
-*last updated 28 September, 2018*
+*last updated 22 October, 2018*

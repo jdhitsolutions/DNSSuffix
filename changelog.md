@@ -1,5 +1,9 @@
 # Changelog for DNSSuffix module
 
+## v0.4.1
+
++ file cleanup for the PowerShell Gallery
+
 ## v0.4.0
 
 + Code cleanup
